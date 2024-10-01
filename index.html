@@ -6,6 +6,33 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div>
+        <h1>Password Generator</h1>
+        <input style="width: 300px;" type="text" id="pass"  readonly>
+        <div>
+
+            <input type="checkbox" id="capitalLetters" value="capitalLetters"checked />
+          <label for="capitalLetters">A-Z</label>
+
+          <input type="checkbox" id="smallLetters" value="smallLetters" />
+          <label for="smallLetters">a-z</label>
+
+          <input type="checkbox" id="numbers" value="numbers" />
+          <label for="numbers">0-9</label>
+
+          <input type="checkbox" id="specialCharacters" value="specialCharacters"/>
+          <label for="specialCharacters">@#$</label>
+
+        </div>
+      </div>
+      <p id="length"></p>
+      <input type="range" min="0" max="24" id="range" value="12">
+      <br>
+        </div>
+        <button onclick="randomPasswordGenerator()">Generator Password</button>
+    </div>
+
+
+    <script src="index.js"></script>
 </body>
 </html>

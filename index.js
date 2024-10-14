@@ -1,5 +1,6 @@
 var copyPassFlag = false;
 
+
 function randomPass(){
     var capitalLetters = document.getElementById('capitalLetters')
     var smallLetters = document.getElementById('smallLetters')
@@ -10,8 +11,16 @@ function randomPass(){
     if(capitalLetters.checked && smallLetters.checked && numbers.checked && specialCharacters.checked){
         weekPass.style.color = 'green'
         weekPass.innerHTML = 'Strong password'
+        var img = document.createElement('img')
+        img.src = './tick.webp'
+        img.className = 'filedImg'
+        weekPass.append(img)
     }else{
+        var img = document.createElement('img')
+        img.src = './cross.webp'
+        img.className = 'filedImg'
         weekPass.innerHTML = 'Week password'
+        weekPass.append(img)
     }
 
     var password = getCombinedCharacterSet(capitalLetters, smallLetters, numbers, specialCharacters)
@@ -100,6 +109,10 @@ function copyPass(ele){
     }
 }
     else{
-        weekPass.innerHTML = "Can't copy empty field"
+        var img = document.createElement('img')
+        img.src = './cross.webp'
+        img.className = 'filedImg'
+        weekPass.innerText = "Can't copy empty field"
+        weekPass.append(img)
     }
 }

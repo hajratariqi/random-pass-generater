@@ -61,3 +61,26 @@ function showPass(ele){
         iconFlag = false
     }
 }
+
+var copyPassFlag = false;
+
+function copyPass(ele){
+    var weekPass = document.getElementById('weekPass')
+    var passInp = document.getElementById('pass')
+    
+    if(passInp.value.length > 1){
+    if(copyPassFlag == false){
+        console.log(ele.innerText);
+        
+        passInp.select()
+        navigator.clipboard.writeText(passInp.value);
+        
+        ele.childNodes[0].src = './copied.png'
+        copyPassFlag = true
+        ele.childNodes[1].nodeValue = 'Copied'
+    }
+}
+    else{
+        weekPass.innerHTML = "Can't copy empty field"
+    }
+}

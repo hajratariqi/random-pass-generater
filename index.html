@@ -33,9 +33,8 @@
 
         #pass {
             width: 100%;
-            padding: 10px 5px;
+            padding: 10px 2px;
             font-size: 16px;
-            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
@@ -58,7 +57,6 @@
         }
 
         .options > div> p {
-            margin-bottom: 10px;
             font-size: 14px;
             color: #666;
         }
@@ -68,16 +66,16 @@
             margin-bottom: 20px;
         }
 
-        button {
+        .generatePass {
             padding: 15px 20px;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px;
             font-size: 16px;
             width: 100%;
             cursor: pointer;
         }
 
-        button:hover {
+        .generatePass:hover {
             background-color: black;
             color: white;
         }
@@ -93,6 +91,23 @@
           top: 5px;
           right: 5px;
         }
+        .copy-btn{
+          padding: 10px;
+          display: flex;
+          width:fit-content;
+          align-items: center;
+          justify-content: center;
+          margin: 10px 0px ;
+        }
+        #weekPass{
+          font-size: 14px ;
+          color: red;
+        }
+        .row{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
     </style>
 </head>
 
@@ -104,6 +119,11 @@
         <input type="text" id="pass" readonly placeholder="Strong Password">
         <img src="./eye-open.svg" width="30px" onclick="showPass(this)" alt="eye icon">
       </div>
+
+      <div class="row">
+      <p id="weekPass"></p>
+      <button class="copy-btn" onclick="copyPass(this)"><img src="./copy.png" width="20px" alt="copy icon">copy</button>
+    </div>
 
         <input type="range" min="0" max="24" id="range" value="12" oninput="updateLength(this.value)">
 
@@ -137,7 +157,7 @@
         </div>
 
 
-        <button onclick="randomPasswordGenerator()">Generate Password</button>
+        <button class="generatePass" onclick="randomPasswordGenerator()">Generate Password</button>
     </div>
 
     <script src="index.js"></script>

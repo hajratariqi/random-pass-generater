@@ -1,37 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password Generator</title>
+    <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 450px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        #pass {
+            width: 100%;
+            padding: 10px 5px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .options {
+            display: flex;
+            justify-content:space-between;
+            gap: 10px;
+            align-items: center;
+            width: 100%;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .options > div> p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        button {
+          border: 1px solid f4f4f9;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: black;
+            color: white;
+        }
+        .select-char{
+          display: flex;
+          align-items: center;
+        }
+    </style>
 </head>
+
 <body>
-    <div>
+    <div class="container">
         <h1>Password Generator</h1>
-        <input style="width: 300px;" type="text" id="pass"  readonly>
-        <div>
+        <input type="text" id="pass" readonly placeholder="Strong Password">
+        <input type="range" min="0" max="24" id="range" value="12" oninput="updateLength(this.value)">
 
-            <input type="checkbox" id="capitalLetters" value="capitalLetters"checked />
-          <label for="capitalLetters">A-Z</label>
+        
+        <div class="options">
+          <div>
+            <p>Password Length: <span id="length"">12</span></p>
+          </div>
 
-          <input type="checkbox" id="smallLetters" value="smallLetters" />
-          <label for="smallLetters">a-z</label>
+          <div class="select-char">
+            <div>
+                <input type="checkbox" id="capitalLetters" value="capitalLetters" checked />
+                <label for="capitalLetters">A-Z</label>
+            </div>
 
-          <input type="checkbox" id="numbers" value="numbers" />
-          <label for="numbers">0-9</label>
+            <div>
+                <input type="checkbox" id="smallLetters" value="smallLetters" />
+                <label for="smallLetters">a-z</label>
+            </div>
 
-          <input type="checkbox" id="specialCharacters" value="specialCharacters"/>
-          <label for="specialCharacters">@#$</label>
+            <div>
+                <input type="checkbox" id="numbers" value="numbers" />
+                <label for="numbers">0-9</label>
+            </div>
 
+            <div>
+                <input type="checkbox" id="specialCharacters" value="specialCharacters" />
+                <label for="specialCharacters">@#$</label>
+            </div>
+          </div>
         </div>
-      </div>
-      <p id="length"></p>
-      <input type="range" min="0" max="24" id="range" value="12">
-      <br>
-        </div>
-        <button onclick="randomPasswordGenerator()">Generator Password</button>
+
+
+        <button onclick="randomPasswordGenerator()">Generate Password</button>
     </div>
-
 
     <script src="index.js"></script>
 </body>

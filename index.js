@@ -1,10 +1,9 @@
 function randomPass(){
-    // get the check boxes element
     var capitalLetters = document.getElementById('capitalLetters')
     var smallLetters = document.getElementById('smallLetters')
     var numbers = document.getElementById('numbers')
     var specialCharacters = document.getElementById('specialCharacters')  
-        // Call the function to get the combined character set
+
     var password = getCombinedCharacterSet(capitalLetters, smallLetters, numbers, specialCharacters)
     return password
     

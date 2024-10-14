@@ -42,6 +42,22 @@ function randomPasswordGenerator(){
         realPass += passLenght[random];
         
     }
-    console.log(realPass);
     document.getElementById('pass').value = realPass
+}
+
+var iconFlag = true;
+
+function showPass(ele){  
+    var passInp = document.getElementById('pass')
+
+    if(iconFlag == false){
+        ele.src = './eye-open.svg'
+        passInp.type = 'text'
+        iconFlag = true
+    }
+    else{
+        ele.src = './eye-close.png'
+        passInp.type = 'password'
+        iconFlag = false
+    }
 }

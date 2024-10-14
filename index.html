@@ -85,13 +85,26 @@
           display: flex;
           align-items: center;
         }
+        .pass-box{
+          position: relative;
+        }
+        .pass-box img{
+          position: absolute;
+          top: 5px;
+          right: 5px;
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <h1>Password Generator</h1>
+
+        <div class="pass-box">
         <input type="text" id="pass" readonly placeholder="Strong Password">
+        <img src="./eye-open.svg" width="30px" onclick="showPass(this)" alt="eye icon">
+      </div>
+
         <input type="range" min="0" max="24" id="range" value="12" oninput="updateLength(this.value)">
 
         

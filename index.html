@@ -63,7 +63,6 @@
 
         input[type="range"] {
             width: 100%;
-            margin-bottom: 20px;
         }
 
         .generatePass {
@@ -100,8 +99,10 @@
           margin: 10px 0px ;
         }
         #weekPass{
-          font-size: 14px ;
+          font-size: 12px ;
           color: red;
+          font-weight: 600;
+          font-family: sans-serif;
         }
         .row{
           display: flex;
@@ -122,7 +123,7 @@
 
       <div class="row">
       <p id="weekPass"></p>
-      <button class="copy-btn" onclick="copyPass(this)"><img src="./copy.png" width="20px" alt="copy icon">copy</button>
+      <button class="copy-btn" id="copyButton" onclick="copyPass(this)"><img src="./copy.png" width="20px" alt="copy icon">copy</button>
     </div>
 
         <input type="range" min="0" max="24" id="range" value="12" oninput="updateLength(this.value)">

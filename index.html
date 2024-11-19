@@ -6,114 +6,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
     <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #ffff;
+            --text-color: #333;
+            --border-color: #e1e4e8;
+        }
+
         body {
-          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--secondary-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            color: var(--text-color);
+            padding: 20px;
         }
 
         .container {
             background-color: #fff;
-            padding: 100px 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            width: 450px;
-
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            max-width: 90%;
         }
 
         h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 24px;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            text-align: center;
+        }
+
+        .pass-box {
+            position: relative;
+            margin-bottom: 1rem;
         }
 
         #pass {
-            width: 100%;
-            padding: 10px 2px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            width: 86%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            transition: border-color 0.3s ease;
         }
 
-        .options {
+        #pass:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .pass-box img {
+            position: absolute;
+            top: 50%;
+            right: 0.75rem;
+            transform: translateY(-50%);
+            cursor: pointer;
+            width: 24px;
+            height: 24px;
+        }
+
+        .row {
             display: flex;
-            justify-content:space-between;
-            gap: 10px;
             align-items: center;
-            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 1rem;
         }
 
-        label {
-            font-size: 14px;
-            color: #555;
+        #weekPass {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        input[type="checkbox"] {
-            margin-right: 5px;
+        .copy-btn {
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: var(--primary-color);
+            /* color: white; */
+            background-color: white;
+            border: 1px solid #dadada;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .options > div> p {
-            font-size: 14px;
-            color: #666;
+        .copy-btn img {
+            width: 16px;
+            height: 16px;
         }
 
         input[type="range"] {
             width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .length-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .length-display p {
+            font-size: 0.875rem;
+            color: var(--text-color);
+        }
+
+        .select-char {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .select-char div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-size: 0.875rem;
+            color: var(--text-color);
+        }
+
+        input[type="checkbox"] {
+            accent-color: var(--primary-color);
         }
 
         .generatePass {
-            padding: 15px 20px;
+            padding: 0.75rem 1.5rem;
             border: none;
-            border-radius: 20px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 1rem;
             width: 100%;
             cursor: pointer;
-        }
-
-        .generatePass:hover {
-            background-color: black;
+            background-color: var(--primary-color);
             color: white;
+            transition: background-color 0.3s ease;
         }
-        .select-char{
-          display: flex;
-          align-items: center;
-        }
-        .pass-box{
-          position: relative;
-        }
-        .pass-box img{
-          position: absolute;
-          top: 5px;
-          right: 5px;
-        }
-        .copy-btn{
-          padding: 10px;
-          display: flex;
-          width:fit-content;
-          align-items: center;
-          justify-content: center;
-          margin: 10px 0px ;
-        }
-        #weekPass{
-          font-size: 14px ;
-          color: red;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          font-family: sans-serif;
-          flex-direction: row-reverse;
-        }
-        .row{
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-        }
-        .filedImg{
-          width: 20px;
+        .filedImg {
+            width: 16px;
+            height: 16px;
         }
     </style>
 </head>
@@ -123,50 +171,50 @@
         <h1>Password Generator</h1>
 
         <div class="pass-box">
-        <input type="text" id="pass" readonly placeholder="Strong Password">
-        <img src="./eye-open.svg" width="30px" onclick="showPass(this)" alt="eye icon">
-      </div>
-
-      <div class="row">
-      <p id="weekPass"></p>
-      <button class="copy-btn" id="copyButton" onclick="copyPass(this)"><img src="./copy.png" width="20px" alt="copy icon">copy</button>
-    </div>
-
-        <input type="range" min="0" max="24" id="range" value="12" oninput="updateLength(this.value)">
-
-        
-        <div class="options">
-          <div>
-            <p>Password Length: <span id="length"">12</span></p>
-          </div>
-
-          <div class="select-char">
-            <div>
-                <input type="checkbox" id="capitalLetters" value="capitalLetters" checked />
-                <label for="capitalLetters">A-Z</label>
-            </div>
-
-            <div>
-                <input type="checkbox" id="smallLetters" value="smallLetters" />
-                <label for="smallLetters">a-z</label>
-            </div>
-
-            <div>
-                <input type="checkbox" id="numbers" value="numbers" />
-                <label for="numbers">0-9</label>
-            </div>
-
-            <div>
-                <input type="checkbox" id="specialCharacters" value="specialCharacters" />
-                <label for="specialCharacters">@#$</label>
-            </div>
-          </div>
+            <input type="text" id="pass" readonly placeholder="Generated Password">
+            <img src="./eye-open.svg" width="24" onclick="showPass(this)" alt="Toggle password visibility">
         </div>
 
+        <div class="row">
+            <p id="weekPass"></p>
+            <button class="copy-btn" id="copyButton" onclick="copyPass(this)"><img src="./copy.png" width="20px" alt="copy icon">copy</button>
+
+        </div>
+
+        <input type="range" min="4" max="32" id="range" value="12" oninput="updateLength(this.value)">
+
+        <div class="options">
+            <div class="length-display">
+                <p>Password Length: <span id="length">12</span></p>
+            </div>
+
+            <div class="select-char">
+                <div>
+                    <input type="checkbox" id="capitalLetters" value="capitalLetters" checked />
+                    <label for="capitalLetters">A-Z</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="smallLetters" value="smallLetters" checked />
+                    <label for="smallLetters">a-z</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="numbers" value="numbers" checked />
+                    <label for="numbers">0-9</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="specialCharacters" value="specialCharacters" />
+                    <label for="specialCharacters">@#$</label>
+                </div>
+            </div>
+        </div>
 
         <button class="generatePass" onclick="randomPasswordGenerator()">Generate Password</button>
     </div>
 
     <script src="index.js"></script>
 </body>
+
 </html>
